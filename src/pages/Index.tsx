@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { FileUpload } from '@/components/FileUpload';
 import { ServiceSelector } from '@/components/ServiceSelector';
@@ -57,43 +56,51 @@ const Index = () => {
       <Header />
       
       <div className="container mx-auto px-4 py-12">
-        <div className="max-w-6xl mx-auto space-y-8">
-          {/* File Upload Section */}
-          <div className="bg-white/80 backdrop-blur-sm rounded-3xl border border-slate-200 p-8 shadow-lg">
-            <FileUpload 
-              onFileUpload={setUploadedFile}
-              uploadedFile={uploadedFile}
-            />
-          </div>
-
-          {/* Configuration Section */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            <ServiceSelector 
-              selectedService={selectedService}
-              onServiceChange={setSelectedService}
-            />
-            
-            <DocumentSelector 
-              selectedDocuments={selectedDocuments}
-              onDocumentsChange={setSelectedDocuments}
-            />
-            
-            <CriticalServiceSelector 
-              isCritical={isCriticalService}
-              onCriticalChange={setIsCriticalService}
-            />
-          </div>
-
-          {/* Analysis Button */}
-          <AnalysisButton 
-            canAnalyze={canAnalyze}
-            isAnalyzing={isAnalyzing}
-            onAnalyze={handleAnalysis}
-          />
-
-          {/* Results Section */}
-          {analysisResults && (
+        <div className="max-w-7xl mx-auto">
+          {/* Two Column Layout */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {/* Left Column - Configuration and Analysis */}
             <div className="space-y-6">
+              {/* Configuration Section */}
+              <div className="space-y-6">
+                <ServiceSelector 
+                  selectedService={selectedService}
+                  onServiceChange={setSelectedService}
+                />
+                
+                <DocumentSelector 
+                  selectedDocuments={selectedDocuments}
+                  onDocumentsChange={setSelectedDocuments}
+                />
+                
+                <CriticalServiceSelector 
+                  isCritical={isCriticalService}
+                  onCriticalChange={setIsCriticalService}
+                />
+              </div>
+
+              {/* Analysis Button */}
+              <AnalysisButton 
+                canAnalyze={canAnalyze}
+                isAnalyzing={isAnalyzing}
+                onAnalyze={handleAnalysis}
+              />
+            </div>
+
+            {/* Right Column - File Upload */}
+            <div>
+              <div className="bg-white/80 backdrop-blur-sm rounded-3xl border border-slate-200 p-8 shadow-lg">
+                <FileUpload 
+                  onFileUpload={setUploadedFile}
+                  uploadedFile={uploadedFile}
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Results Section - Full Width */}
+          {analysisResults && (
+            <div className="mt-8 space-y-6">
               <ResultsDisplay results={analysisResults} />
               <div className="flex justify-end">
                 <ExportButton results={analysisResults} />

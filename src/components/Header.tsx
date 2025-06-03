@@ -10,7 +10,7 @@ export const Header = () => {
             <div className="bg-gradient-to-r from-blue-300 to-purple-300 p-3 rounded-2xl shadow-md">
               <FileText className="h-7 w-7 text-white" />
             </div>
-            <h1 className="text-3xl font-light text-slate-800">Grundbuch-Check</h1>
+            <h1 className="text-3xl font-light text-slate-800">DORA KI</h1>
           </div>
           <div className="flex space-x-3">
             <div className="bg-gradient-to-r from-green-200 to-emerald-200 text-slate-700 px-4 py-2 rounded-full text-sm font-medium shadow-sm">
