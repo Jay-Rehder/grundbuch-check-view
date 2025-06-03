@@ -22,20 +22,20 @@ export const DocumentSelector = ({ selectedDocuments, onDocumentsChange }: Docum
   };
 
   return (
-    <div className="bg-white/80 backdrop-blur-sm rounded-2xl border border-slate-200 p-6 shadow-lg">
-      <label className="block text-slate-700 text-sm font-medium mb-4">
+    <div className="bg-white rounded-xl border border-gray-200 p-6 shadow-sm">
+      <label className="block text-gray-700 text-sm font-medium mb-4">
         Dokumente zur Verarbeitung auswählen
       </label>
       <Select onValueChange={handleDocumentChange}>
-        <SelectTrigger className="w-full bg-white border-slate-300 text-slate-700 rounded-xl shadow-sm hover:border-blue-300 transition-colors">
+        <SelectTrigger className="w-full bg-white border-gray-300 text-gray-700 rounded-lg shadow-sm hover:border-gray-400 transition-colors">
           <SelectValue placeholder="Option auswählen" />
         </SelectTrigger>
-        <SelectContent className="bg-white border-slate-200 rounded-xl shadow-lg">
+        <SelectContent className="bg-white border-gray-200 rounded-lg shadow-lg">
           {documentTypes.map((doc) => (
             <SelectItem 
               key={doc.value} 
               value={doc.value}
-              className="text-slate-700 focus:bg-blue-50 rounded-lg"
+              className="text-gray-700 focus:bg-gray-50 rounded-md"
             >
               {doc.label}
             </SelectItem>
@@ -46,7 +46,7 @@ export const DocumentSelector = ({ selectedDocuments, onDocumentsChange }: Docum
       {selectedDocuments.length > 0 && (
         <div className="mt-4 space-y-2">
           {selectedDocuments.map((doc) => (
-            <div key={doc} className="bg-gradient-to-r from-blue-100 to-purple-100 text-slate-700 px-4 py-2 rounded-xl text-sm font-medium shadow-sm">
+            <div key={doc} className="bg-gray-50 text-gray-700 px-3 py-2 rounded-lg text-sm border border-gray-200">
               {documentTypes.find(d => d.value === doc)?.label}
             </div>
           ))}

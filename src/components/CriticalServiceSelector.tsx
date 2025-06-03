@@ -8,8 +8,8 @@ interface CriticalServiceSelectorProps {
 
 export const CriticalServiceSelector = ({ isCritical, onCriticalChange }: CriticalServiceSelectorProps) => {
   return (
-    <div className="bg-white/80 backdrop-blur-sm rounded-2xl border border-slate-200 p-6 shadow-lg">
-      <label className="block text-slate-700 text-sm font-medium mb-6">
+    <div className="bg-white rounded-xl border border-gray-200 p-6 shadow-sm">
+      <label className="block text-gray-700 text-sm font-medium mb-6">
         Handelt es sich um eine kritisch/wichtige IKT Dienstleistung?
       </label>
       
@@ -21,9 +21,9 @@ export const CriticalServiceSelector = ({ isCritical, onCriticalChange }: Critic
             name="critical-service"
             checked={isCritical}
             onChange={() => onCriticalChange(true)}
-            className="w-5 h-5 text-red-400 bg-white border-slate-300 focus:ring-red-300 focus:ring-2"
+            className="w-5 h-5 text-blue-600 bg-white border-gray-300 focus:ring-blue-300 focus:ring-2"
           />
-          <Label htmlFor="critical-yes" className="text-slate-700 font-medium">
+          <Label htmlFor="critical-yes" className="text-gray-700 font-medium">
             Ja
           </Label>
         </div>
@@ -35,9 +35,9 @@ export const CriticalServiceSelector = ({ isCritical, onCriticalChange }: Critic
             name="critical-service"
             checked={!isCritical}
             onChange={() => onCriticalChange(false)}
-            className="w-5 h-5 text-slate-400 bg-white border-slate-300 focus:ring-slate-300 focus:ring-2"
+            className="w-5 h-5 text-gray-400 bg-white border-gray-300 focus:ring-gray-300 focus:ring-2"
           />
-          <Label htmlFor="critical-no" className="text-slate-700 font-medium">
+          <Label htmlFor="critical-no" className="text-gray-700 font-medium">
             Nein
           </Label>
         </div>

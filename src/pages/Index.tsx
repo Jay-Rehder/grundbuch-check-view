@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { FileUpload } from '@/components/FileUpload';
 import { ServiceSelector } from '@/components/ServiceSelector';
@@ -52,13 +53,13 @@ const Index = () => {
   const canAnalyze = uploadedFile && selectedService && selectedDocuments.length > 0;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50">
+    <div className="min-h-screen bg-gray-50">
       <Header />
       
-      <div className="container mx-auto px-4 py-12">
+      <div className="container mx-auto px-6 py-8">
         <div className="max-w-7xl mx-auto">
           {/* Two Column Layout */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Left Column - Configuration and Analysis */}
             <div className="space-y-6">
               {/* Configuration Section */}
@@ -80,16 +81,18 @@ const Index = () => {
               </div>
 
               {/* Analysis Button */}
-              <AnalysisButton 
-                canAnalyze={canAnalyze}
-                isAnalyzing={isAnalyzing}
-                onAnalyze={handleAnalysis}
-              />
+              <div className="pt-4">
+                <AnalysisButton 
+                  canAnalyze={canAnalyze}
+                  isAnalyzing={isAnalyzing}
+                  onAnalyze={handleAnalysis}
+                />
+              </div>
             </div>
 
             {/* Right Column - File Upload */}
             <div>
-              <div className="bg-white/80 backdrop-blur-sm rounded-3xl border border-slate-200 p-8 shadow-lg">
+              <div className="bg-white rounded-2xl border border-gray-200 p-8 shadow-sm">
                 <FileUpload 
                   onFileUpload={setUploadedFile}
                   uploadedFile={uploadedFile}
@@ -100,7 +103,7 @@ const Index = () => {
 
           {/* Results Section - Full Width */}
           {analysisResults && (
-            <div className="mt-8 space-y-6">
+            <div className="mt-12 space-y-6">
               <ResultsDisplay results={analysisResults} />
               <div className="flex justify-end">
                 <ExportButton results={analysisResults} />
