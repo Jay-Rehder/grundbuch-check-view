@@ -29,7 +29,7 @@ export const ExportButton = ({ results }: ExportButtonProps) => {
   return (
     <Button
       onClick={handleExport}
-      className="bg-green-600 hover:bg-green-700 text-white"
+      className="bg-gradient-to-r from-green-300 to-emerald-300 hover:from-green-400 hover:to-emerald-400 text-white px-8 py-3 rounded-xl font-medium shadow-lg transition-all duration-200 hover:scale-105"
     >
       <Download className="h-4 w-4 mr-2" />
       Export

@@ -19,7 +19,7 @@ export const ResultsDisplay = ({ results }: ResultsDisplayProps) => {
   const getStatusIcon = (status: string) => {
     switch (status) {
       case 'compliant':
-        return <CheckCircle className="h-5 w-5 text-green-400" />;
+        return <CheckCircle className="h-5 w-5 text-green-500" />;
       case 'warning':
         return <AlertTriangle className="h-5 w-5 text-orange-400" />;
       case 'non-compliant':
@@ -29,48 +29,35 @@ export const ResultsDisplay = ({ results }: ResultsDisplayProps) => {
     }
   };
 
-  const getStatusColor = (status: string) => {
-    switch (status) {
-      case 'compliant':
-        return 'bg-green-500';
-      case 'warning':
-        return 'bg-orange-500';
-      case 'non-compliant':
-        return 'bg-red-500';
-      default:
-        return 'bg-blue-500';
-    }
-  };
-
   return (
     <div className="space-y-6">
       {/* Progress Bar */}
-      <div className="bg-slate-800/50 backdrop-blur-sm rounded-xl border border-slate-700 p-6">
-        <div className="flex items-center justify-between mb-4">
-          <h3 className="text-lg font-semibold text-white">Analyse-Ergebnisse</h3>
-          <Alert className="bg-blue-900/50 border-blue-700 w-auto">
-            <Info className="h-4 w-4 text-blue-400" />
-            <AlertDescription className="text-blue-300">
+      <div className="bg-white/80 backdrop-blur-sm rounded-2xl border border-slate-200 p-8 shadow-lg">
+        <div className="flex items-center justify-between mb-6">
+          <h3 className="text-xl font-light text-slate-800">Analyse-Ergebnisse</h3>
+          <Alert className="bg-blue-50 border-blue-200 w-auto rounded-xl">
+            <Info className="h-4 w-4 text-blue-500" />
+            <AlertDescription className="text-blue-700 text-sm">
               Vorherige Tabelle wird angezeigt. Klicken Sie 'Auswerten' für eine neue Analyse.
             </AlertDescription>
           </Alert>
         </div>
         
-        <div className="flex h-8 rounded-lg overflow-hidden">
+        <div className="flex h-10 rounded-2xl overflow-hidden shadow-inner">
           <div 
-            className="bg-green-500 flex items-center justify-center text-white text-sm font-medium"
+            className="bg-gradient-to-r from-green-300 to-emerald-300 flex items-center justify-center text-white text-sm font-medium"
             style={{ width: `${results.compliant}%` }}
           >
             {results.compliant}%
           </div>
           <div 
-            className="bg-orange-500 flex items-center justify-center text-white text-sm font-medium"
+            className="bg-gradient-to-r from-orange-300 to-yellow-300 flex items-center justify-center text-white text-sm font-medium"
             style={{ width: `${results.warning}%` }}
           >
             {results.warning}%
           </div>
           <div 
-            className="bg-red-500 flex items-center justify-center text-white text-sm font-medium"
+            className="bg-gradient-to-r from-red-300 to-pink-300 flex items-center justify-center text-white text-sm font-medium"
             style={{ width: `${results.nonCompliant}%` }}
           >
             {results.nonCompliant}%
@@ -79,16 +66,16 @@ export const ResultsDisplay = ({ results }: ResultsDisplayProps) => {
       </div>
 
       {/* Document View */}
-      <div className="bg-slate-800/50 backdrop-blur-sm rounded-xl border border-slate-700 p-6">
-        <div className="bg-white rounded-lg p-6 min-h-96 relative">
-          <div className="space-y-4">
+      <div className="bg-white/80 backdrop-blur-sm rounded-2xl border border-slate-200 p-8 shadow-lg">
+        <div className="bg-white rounded-2xl p-8 min-h-96 relative shadow-inner">
+          <div className="space-y-6">
             {results.details.map((detail, index) => (
-              <div key={index} className="border-l-4 border-gray-300 pl-4">
-                <div className="flex items-start space-x-3">
+              <div key={index} className="border-l-4 border-slate-200 pl-6 py-2">
+                <div className="flex items-start space-x-4">
                   {getStatusIcon(detail.status)}
                   <div>
-                    <h4 className="font-semibold text-gray-900 mb-2">{detail.section}</h4>
-                    <p className="text-gray-700 text-sm leading-relaxed">
+                    <h4 className="font-medium text-slate-800 mb-3 text-lg">{detail.section}</h4>
+                    <p className="text-slate-600 text-sm leading-relaxed">
                       {detail.description}
                     </p>
                   </div>
@@ -98,7 +85,7 @@ export const ResultsDisplay = ({ results }: ResultsDisplayProps) => {
           </div>
           
           {/* Sample document content */}
-          <div className="absolute bottom-4 right-4 text-xs text-gray-500">
+          <div className="absolute bottom-6 right-6 text-xs text-slate-400 bg-slate-50 px-3 py-1 rounded-full">
             Seite 1 von 3
           </div>
         </div>

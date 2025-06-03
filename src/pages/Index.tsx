@@ -53,13 +53,13 @@ const Index = () => {
   const canAnalyze = uploadedFile && selectedService && selectedDocuments.length > 0;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50">
       <Header />
       
-      <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto px-4 py-12">
         <div className="max-w-6xl mx-auto space-y-8">
           {/* File Upload Section */}
-          <div className="bg-slate-800/50 backdrop-blur-sm rounded-xl border border-slate-700 p-6">
+          <div className="bg-white/80 backdrop-blur-sm rounded-3xl border border-slate-200 p-8 shadow-lg">
             <FileUpload 
               onFileUpload={setUploadedFile}
               uploadedFile={uploadedFile}

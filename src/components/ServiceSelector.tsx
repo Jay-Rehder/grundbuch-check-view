@@ -17,20 +17,20 @@ export const ServiceSelector = ({ selectedService, onServiceChange }: ServiceSel
   ];
 
   return (
-    <div className="bg-slate-800/50 backdrop-blur-sm rounded-xl border border-slate-700 p-6">
-      <label className="block text-white text-sm font-medium mb-3">
+    <div className="bg-white/80 backdrop-blur-sm rounded-2xl border border-slate-200 p-6 shadow-lg">
+      <label className="block text-slate-700 text-sm font-medium mb-4">
         IKT-Dienstleistung auswählen
       </label>
       <Select value={selectedService} onValueChange={onServiceChange}>
-        <SelectTrigger className="w-full bg-slate-700 border-slate-600 text-white">
+        <SelectTrigger className="w-full bg-white border-slate-300 text-slate-700 rounded-xl shadow-sm hover:border-blue-300 transition-colors">
           <SelectValue placeholder="Alle" />
         </SelectTrigger>
-        <SelectContent className="bg-slate-700 border-slate-600">
+        <SelectContent className="bg-white border-slate-200 rounded-xl shadow-lg">
           {services.map((service) => (
             <SelectItem 
               key={service.value} 
               value={service.value}
-              className="text-white focus:bg-slate-600"
+              className="text-slate-700 focus:bg-blue-50 rounded-lg"
             >
               {service.label}
             </SelectItem>
