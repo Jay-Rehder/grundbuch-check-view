@@ -53,7 +53,7 @@ const Index = () => {
   const canAnalyze = uploadedFile && selectedService && selectedDocuments.length > 0;
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen" style={{ backgroundColor: '#F1F7FE' }}>
       <Header />
       
       <div className="container mx-auto px-6 py-8">

@@ -1,5 +1,6 @@
 
-import { FileText, User, Menu } from 'lucide-react';
+import { FileText, User } from 'lucide-react';
+import { HamburgerMenu } from './HamburgerMenu';
 
 export const Header = () => {
   return (
@@ -33,9 +34,7 @@ export const Header = () => {
           
           {/* Hamburger Menu */}
           <div className="flex items-center">
-            <button className="p-2">
-              <Menu className="h-6 w-6 text-gray-600" />
-            </button>
+            <HamburgerMenu />
           </div>
         </div>
       </div>
