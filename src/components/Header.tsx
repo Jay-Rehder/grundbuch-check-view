@@ -1,41 +1,33 @@
 
-import { FileText, User } from 'lucide-react';
+import { User } from 'lucide-react';
 import { HamburgerMenu } from './HamburgerMenu';
 
 export const Header = () => {
   return (
-    <header className="bg-white border-b border-gray-100">
-      <div className="container mx-auto px-4 py-4">
-        <div className="flex items-center justify-between">
-          {/* User Icon */}
-          <div className="flex items-center">
-            <div className="bg-gray-100 p-2 rounded-full">
-              <User className="h-6 w-6 text-gray-600" />
-            </div>
+    <header className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 py-4 px-6 transition-colors">
+      <div className="container mx-auto flex items-center justify-between">
+        {/* Left - User Icon */}
+        <div className="flex items-center">
+          <div className="w-8 h-8 bg-gray-200 dark:bg-gray-600 rounded-full flex items-center justify-center">
+            <User className="h-4 w-4 text-gray-600 dark:text-gray-300" />
           </div>
-          
-          {/* Center - Logo and Tags */}
-          <div className="flex items-center space-x-4">
-            <div className="flex items-center space-x-3">
-              <div className="bg-blue-200 p-2 rounded-xl">
-                <FileText className="h-6 w-6 text-blue-700" />
-              </div>
-              <h1 className="text-2xl font-medium text-gray-800">DORA KI</h1>
-            </div>
-            <div className="flex space-x-2">
-              <div className="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-medium">
-                OCR
-              </div>
-              <div className="bg-pink-100 text-pink-700 px-3 py-1 rounded-full text-sm font-medium">
-                KI
-              </div>
-            </div>
+        </div>
+
+        {/* Center - Logo */}
+        <div className="flex items-center space-x-2">
+          <div className="w-8 h-8 bg-blue-200 dark:bg-blue-700 rounded-lg flex items-center justify-center">
+            <span className="text-blue-600 dark:text-blue-300 font-bold text-sm">📄</span>
           </div>
-          
-          {/* Hamburger Menu */}
-          <div className="flex items-center">
-            <HamburgerMenu />
+          <span className="font-semibold text-lg text-gray-800 dark:text-gray-200">DORA KI</span>
+          <div className="flex space-x-1">
+            <span className="bg-green-100 dark:bg-green-800 text-green-800 dark:text-green-200 px-2 py-1 text-xs rounded">OCR</span>
+            <span className="bg-purple-100 dark:bg-purple-800 text-purple-800 dark:text-purple-200 px-2 py-1 text-xs rounded">KI</span>
           </div>
+        </div>
+
+        {/* Right - Hamburger Menu */}
+        <div className="flex items-center">
+          <HamburgerMenu />
         </div>
       </div>
     </header>

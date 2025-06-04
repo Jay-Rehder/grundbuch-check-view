@@ -1,5 +1,5 @@
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Menu, Moon, Sun, Settings, Clock, LogOut } from 'lucide-react';
 import {
   Sheet,
@@ -12,13 +12,33 @@ import { Button } from '@/components/ui/button';
 import { Switch } from '@/components/ui/switch';
 
 export const HamburgerMenu = () => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem('darkMode') === 'true' || 
+             (!localStorage.getItem('darkMode') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    }
+    return false;
+  });
+
+  useEffect(() => {
+    if (isDarkMode) {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('darkMode', 'true');
+    } else {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('darkMode', 'false');
+    }
+  }, [isDarkMode]);
+
+  const toggleDarkMode = () => {
+    setIsDarkMode(!isDarkMode);
+  };
 
   const menuItems = [
     {
       icon: isDarkMode ? Sun : Moon,
       label: 'Dark Mode',
-      action: () => setIsDarkMode(!isDarkMode),
+      action: toggleDarkMode,
       hasSwitch: true,
       switchValue: isDarkMode
     },
@@ -46,23 +66,23 @@ export const HamburgerMenu = () => {
     <Sheet>
       <SheetTrigger asChild>
         <Button variant="ghost" size="icon" className="p-2">
-          <Menu className="h-6 w-6 text-gray-600" />
+          <Menu className="h-6 w-6 text-gray-600 dark:text-gray-300" />
         </Button>
       </SheetTrigger>
-      <SheetContent side="right" className="w-80">
+      <SheetContent side="right" className="w-80 dark:bg-gray-800 dark:border-gray-700">
         <SheetHeader>
-          <SheetTitle className="text-left">Menü</SheetTitle>
+          <SheetTitle className="text-left dark:text-gray-200">Menü</SheetTitle>
         </SheetHeader>
         <div className="mt-6 space-y-4">
           {menuItems.map((item, index) => (
             <div 
               key={index}
-              className="flex items-center justify-between p-3 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer"
+              className="flex items-center justify-between p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors cursor-pointer"
               onClick={!item.hasSwitch ? item.action : undefined}
             >
               <div className="flex items-center space-x-3">
-                <item.icon className="h-5 w-5 text-gray-600" />
-                <span className="text-gray-700 font-medium">{item.label}</span>
+                <item.icon className="h-5 w-5 text-gray-600 dark:text-gray-300" />
+                <span className="text-gray-700 dark:text-gray-200 font-medium">{item.label}</span>
               </div>
               {item.hasSwitch && (
                 <Switch

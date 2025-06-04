@@ -53,7 +53,7 @@ const Index = () => {
   const canAnalyze = uploadedFile && selectedService && selectedDocuments.length > 0;
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#F1F7FE' }}>
+    <div className="min-h-screen dark:bg-gray-900 transition-colors" style={{ backgroundColor: '#F1F7FE' }}>
       <Header />
       
       <div className="container mx-auto px-6 py-8">
@@ -92,7 +92,7 @@ const Index = () => {
 
             {/* Right Column - File Upload */}
             <div>
-              <div className="bg-white rounded-2xl border border-gray-200 p-8 shadow-sm">
+              <div className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 p-8 shadow-sm transition-colors">
                 <FileUpload 
                   onFileUpload={setUploadedFile}
                   uploadedFile={uploadedFile}
