@@ -8,6 +8,7 @@ import { AnalysisButton } from '@/components/AnalysisButton';
 import { ResultsDisplay } from '@/components/ResultsDisplay';
 import { ExportButton } from '@/components/ExportButton';
 import { Header } from '@/components/Header';
+import { Footer } from '@/components/Footer';
 
 const Index = () => {
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
@@ -86,6 +87,7 @@ const Index = () => {
                   canAnalyze={canAnalyze}
                   isAnalyzing={isAnalyzing}
                   onAnalyze={handleAnalysis}
+                  uploadedFile={uploadedFile}
                 />
               </div>
             </div>
@@ -112,6 +114,8 @@ const Index = () => {
           )}
         </div>
       </div>
+
+      <Footer />
     </div>
   );
 };

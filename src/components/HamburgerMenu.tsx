@@ -1,5 +1,6 @@
 
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Menu, Moon, Sun, Settings, Clock, LogOut } from 'lucide-react';
 import {
   Sheet,
@@ -10,8 +11,13 @@ import {
 } from '@/components/ui/sheet';
 import { Button } from '@/components/ui/button';
 import { Switch } from '@/components/ui/switch';
+import { useAuth } from '@/contexts/AuthContext';
+import { useToast } from '@/hooks/use-toast';
 
 export const HamburgerMenu = () => {
+  const navigate = useNavigate();
+  const { logout } = useAuth();
+  const { toast } = useToast();
   const [isDarkMode, setIsDarkMode] = useState(() => {
     if (typeof window !== 'undefined') {
       return localStorage.getItem('darkMode') === 'true' || 
@@ -32,6 +38,15 @@ export const HamburgerMenu = () => {
 
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode);
+  };
+
+  const handleLogout = () => {
+    logout();
+    toast({
+      title: "Erfolgreich abgemeldet",
+      description: "Sie wurden sicher abgemeldet.",
+    });
+    navigate('/login');
   };
 
   const menuItems = [
@@ -57,7 +72,7 @@ export const HamburgerMenu = () => {
     {
       icon: LogOut,
       label: 'Ausloggen',
-      action: () => console.log('Ausloggen'),
+      action: handleLogout,
       hasSwitch: false
     }
   ];

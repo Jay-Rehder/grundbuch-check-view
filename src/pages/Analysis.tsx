@@ -1,14 +1,13 @@
 
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { Header } from '@/components/Header';
+import { Footer } from '@/components/Footer';
 import { Progress } from '@/components/ui/progress';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { ChevronDown, ChevronUp, Download } from 'lucide-react';
 
 const Analysis = () => {
-  const navigate = useNavigate();
   const [progress, setProgress] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const [expandedSections, setExpandedSections] = useState<number[]>([3]); // Section 4 expanded by default
@@ -93,6 +92,7 @@ const Analysis = () => {
             </div>
           </div>
         </div>
+        <Footer />
       </div>
     );
   }
@@ -356,17 +356,9 @@ const Analysis = () => {
             </div>
           </CardContent>
         </Card>
-
-        <div className="flex justify-center mt-8">
-          <Button 
-            onClick={() => navigate('/')}
-            variant="outline"
-            className="px-8 dark:border-gray-600 dark:text-gray-200 dark:hover:bg-gray-700"
-          >
-            Zurück zur Startseite
-          </Button>
-        </div>
       </div>
+
+      <Footer />
     </div>
   );
 };
