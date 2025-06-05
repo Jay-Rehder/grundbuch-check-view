@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { AuthProvider, useAuth } from "@/contexts/AuthContext";
 import { ColorSchemeProvider } from "@/contexts/ColorSchemeContext";
 import Index from "./pages/Index";
+import Dashboard from "./pages/Dashboard";
 import Analysis from "./pages/Analysis";
 import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
@@ -25,13 +26,21 @@ const AppRoutes = () => {
     <Routes>
       <Route 
         path="/login" 
-        element={isAuthenticated ? <Navigate to="/" replace /> : <Login />} 
+        element={isAuthenticated ? <Navigate to="/dashboard" replace /> : <Login />} 
       />
       <Route 
         path="/" 
         element={
           <ProtectedRoute>
             <Index />
+          </ProtectedRoute>
+        } 
+      />
+      <Route 
+        path="/dashboard" 
+        element={
+          <ProtectedRoute>
+            <Dashboard />
           </ProtectedRoute>
         } 
       />

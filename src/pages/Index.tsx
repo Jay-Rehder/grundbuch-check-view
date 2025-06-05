@@ -90,7 +90,6 @@ const Index = () => {
                     canAnalyze={canAnalyze}
                     isAnalyzing={isAnalyzing}
                     onAnalyze={handleAnalysis}
-                    uploadedFile={uploadedFile}
                   />
                 </div>
               </div>
