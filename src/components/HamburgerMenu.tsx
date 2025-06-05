@@ -71,10 +71,12 @@ export const HamburgerMenu = () => {
         )}
       </div>
 
-      <ColorSchemeDialog 
-        open={showColorDialog} 
-        onOpenChange={setShowColorDialog} 
-      />
+      {showColorDialog && (
+        <ColorSchemeDialog 
+          open={showColorDialog} 
+          onOpenChange={setShowColorDialog} 
+        />
+      )}
     </>
   );
 };
