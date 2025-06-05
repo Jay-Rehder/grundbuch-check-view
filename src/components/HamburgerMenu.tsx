@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Menu, Moon, Sun, Settings, Clock, LogOut } from 'lucide-react';
+import { Menu, Moon, Sun, Clock, LogOut } from 'lucide-react';
 import {
   Sheet,
   SheetContent,
@@ -13,6 +13,7 @@ import { Button } from '@/components/ui/button';
 import { Switch } from '@/components/ui/switch';
 import { useAuth } from '@/contexts/AuthContext';
 import { useToast } from '@/hooks/use-toast';
+import { ColorSchemeDialog } from '@/components/ColorSchemeDialog';
 
 export const HamburgerMenu = () => {
   const navigate = useNavigate();
@@ -49,34 +50,6 @@ export const HamburgerMenu = () => {
     navigate('/login');
   };
 
-  const menuItems = [
-    {
-      icon: isDarkMode ? Sun : Moon,
-      label: 'Dark Mode',
-      action: toggleDarkMode,
-      hasSwitch: true,
-      switchValue: isDarkMode
-    },
-    {
-      icon: Settings,
-      label: 'Schema ändern',
-      action: () => console.log('Schema ändern'),
-      hasSwitch: false
-    },
-    {
-      icon: Clock,
-      label: 'Historie',
-      action: () => console.log('Historie'),
-      hasSwitch: false
-    },
-    {
-      icon: LogOut,
-      label: 'Ausloggen',
-      action: handleLogout,
-      hasSwitch: false
-    }
-  ];
-
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -89,24 +62,40 @@ export const HamburgerMenu = () => {
           <SheetTitle className="text-left dark:text-gray-200">Menü</SheetTitle>
         </SheetHeader>
         <div className="mt-6 space-y-4">
-          {menuItems.map((item, index) => (
-            <div 
-              key={index}
-              className="flex items-center justify-between p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors cursor-pointer"
-              onClick={!item.hasSwitch ? item.action : undefined}
-            >
-              <div className="flex items-center space-x-3">
-                <item.icon className="h-5 w-5 text-gray-600 dark:text-gray-300" />
-                <span className="text-gray-700 dark:text-gray-200 font-medium">{item.label}</span>
-              </div>
-              {item.hasSwitch && (
-                <Switch
-                  checked={item.switchValue}
-                  onCheckedChange={item.action}
-                />
-              )}
+          <div 
+            className="flex items-center justify-between p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors cursor-pointer"
+          >
+            <div className="flex items-center space-x-3">
+              {isDarkMode ? <Sun className="h-5 w-5 text-gray-600 dark:text-gray-300" /> : <Moon className="h-5 w-5 text-gray-600 dark:text-gray-300" />}
+              <span className="text-gray-700 dark:text-gray-200 font-medium">Dark Mode</span>
             </div>
-          ))}
+            <Switch
+              checked={isDarkMode}
+              onCheckedChange={toggleDarkMode}
+            />
+          </div>
+
+          <ColorSchemeDialog />
+          
+          <div 
+            className="flex items-center justify-between p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors cursor-pointer"
+            onClick={() => console.log('Historie')}
+          >
+            <div className="flex items-center space-x-3">
+              <Clock className="h-5 w-5 text-gray-600 dark:text-gray-300" />
+              <span className="text-gray-700 dark:text-gray-200 font-medium">Historie</span>
+            </div>
+          </div>
+
+          <div 
+            className="flex items-center justify-between p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors cursor-pointer"
+            onClick={handleLogout}
+          >
+            <div className="flex items-center space-x-3">
+              <LogOut className="h-5 w-5 text-gray-600 dark:text-gray-300" />
+              <span className="text-gray-700 dark:text-gray-200 font-medium">Ausloggen</span>
+            </div>
+          </div>
         </div>
       </SheetContent>
     </Sheet>

@@ -9,6 +9,7 @@ import { ResultsDisplay } from '@/components/ResultsDisplay';
 import { ExportButton } from '@/components/ExportButton';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
+import { useColorScheme } from '@/contexts/ColorSchemeContext';
 
 const Index = () => {
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
@@ -17,6 +18,7 @@ const Index = () => {
   const [isCriticalService, setIsCriticalService] = useState<boolean>(true);
   const [analysisResults, setAnalysisResults] = useState<any>(null);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
+  const { currentScheme } = useColorScheme();
 
   const handleAnalysis = async () => {
     if (!uploadedFile) return;
@@ -54,64 +56,66 @@ const Index = () => {
   const canAnalyze = uploadedFile && selectedService && selectedDocuments.length > 0;
 
   return (
-    <div className="min-h-screen dark:bg-gray-900 transition-colors" style={{ backgroundColor: '#F1F7FE' }}>
+    <div className="min-h-screen flex flex-col dark:bg-gray-900 transition-colors" style={{ backgroundColor: currentScheme.color }}>
       <Header />
       
-      <div className="container mx-auto px-6 py-8">
-        <div className="max-w-7xl mx-auto">
-          {/* Two Column Layout */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Left Column - Configuration and Analysis */}
-            <div className="space-y-6">
-              {/* Configuration Section */}
+      <div className="flex-1 pt-20 pb-8">
+        <div className="container mx-auto px-6 py-8">
+          <div className="max-w-7xl mx-auto">
+            {/* Two Column Layout */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+              {/* Left Column - Configuration and Analysis */}
               <div className="space-y-6">
-                <ServiceSelector 
-                  selectedService={selectedService}
-                  onServiceChange={setSelectedService}
-                />
-                
-                <DocumentSelector 
-                  selectedDocuments={selectedDocuments}
-                  onDocumentsChange={setSelectedDocuments}
-                />
-                
-                <CriticalServiceSelector 
-                  isCritical={isCriticalService}
-                  onCriticalChange={setIsCriticalService}
-                />
+                {/* Configuration Section */}
+                <div className="space-y-6">
+                  <ServiceSelector 
+                    selectedService={selectedService}
+                    onServiceChange={setSelectedService}
+                  />
+                  
+                  <DocumentSelector 
+                    selectedDocuments={selectedDocuments}
+                    onDocumentsChange={setSelectedDocuments}
+                  />
+                  
+                  <CriticalServiceSelector 
+                    isCritical={isCriticalService}
+                    onCriticalChange={setIsCriticalService}
+                  />
+                </div>
+
+                {/* Analysis Button */}
+                <div className="pt-4">
+                  <AnalysisButton 
+                    canAnalyze={canAnalyze}
+                    isAnalyzing={isAnalyzing}
+                    onAnalyze={handleAnalysis}
+                    uploadedFile={uploadedFile}
+                  />
+                </div>
               </div>
 
-              {/* Analysis Button */}
-              <div className="pt-4">
-                <AnalysisButton 
-                  canAnalyze={canAnalyze}
-                  isAnalyzing={isAnalyzing}
-                  onAnalyze={handleAnalysis}
-                  uploadedFile={uploadedFile}
-                />
+              {/* Right Column - File Upload */}
+              <div>
+                <div className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 p-8 shadow-sm transition-colors">
+                  <FileUpload 
+                    onFileUpload={setUploadedFile}
+                    uploadedFile={uploadedFile}
+                  />
+                </div>
               </div>
             </div>
 
-            {/* Right Column - File Upload */}
-            <div>
-              <div className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 p-8 shadow-sm transition-colors">
-                <FileUpload 
-                  onFileUpload={setUploadedFile}
-                  uploadedFile={uploadedFile}
-                />
+            {/* Results Section - Full Width */}
+            {analysisResults && (
+              <div className="mt-12 space-y-6">
+                <ResultsDisplay results={analysisResults} />
+                <div className="flex justify-end">
+                  <ExportButton results={analysisResults} />
+                </div>
               </div>
-            </div>
+            )}
           </div>
-
-          {/* Results Section - Full Width */}
-          {analysisResults && (
-            <div className="mt-12 space-y-6">
-              <ResultsDisplay results={analysisResults} />
-              <div className="flex justify-end">
-                <ExportButton results={analysisResults} />
-              </div>
-            </div>
-          )}
         </div>
       </div>
 

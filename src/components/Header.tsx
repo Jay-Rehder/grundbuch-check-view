@@ -5,7 +5,7 @@ import { HamburgerMenu } from './HamburgerMenu';
 
 export const Header = () => {
   return (
-    <header className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 py-4 px-6 transition-colors">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 py-4 px-6 transition-colors">
       <div className="container mx-auto flex items-center justify-between">
         {/* Left - User Icon */}
         <div className="flex items-center">
