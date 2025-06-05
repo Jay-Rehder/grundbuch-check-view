@@ -75,7 +75,7 @@ const Dashboard = () => {
               <div className="grid grid-cols-4 gap-8 h-full">
                 
                 {/* Left Section - Übersicht */}
-                <div className="col-span-3 border-r border-gray-300 pr-8">
+                <div className="col-span-3 pr-8 relative">
                   <div className="flex items-center justify-between mb-8">
                     <h2 className="text-xl font-semibold text-gray-800">Übersicht</h2>
                     <Link to="/">
@@ -100,8 +100,11 @@ const Dashboard = () => {
                     ))}
                   </div>
 
+                  {/* Blaue horizontale Trennlinie */}
+                  <div className="border-t-2 border-dashed border-blue-400 mb-8"></div>
+
                   {/* Projekte - Verteilung */}
-                  <div className="mt-8">
+                  <div>
                     <h3 className="text-lg font-semibold text-gray-800 mb-4">Projekte - Verteilung</h3>
                     <div className="flex rounded-lg overflow-hidden h-8">
                       <div className="bg-green-500 flex-1 flex items-center justify-center text-white text-sm font-medium" style={{ flexBasis: '75%' }}>
@@ -116,12 +119,8 @@ const Dashboard = () => {
                     </div>
                   </div>
 
-                  {/* Bottom Right Button */}
-                  <div className="absolute bottom-8 right-8">
-                    <Button className="bg-blue-100 hover:bg-blue-200 text-blue-800 border border-blue-300">
-                      Projekte anzeigen
-                    </Button>
-                  </div>
+                  {/* Blaue vertikale Trennlinie */}
+                  <div className="absolute top-0 right-0 h-full border-r-2 border-dashed border-blue-400"></div>
                 </div>
 
                 {/* Right Section - Aktive Auswertungen */}
@@ -178,6 +177,13 @@ const Dashboard = () => {
                     ))}
                   </div>
                 </div>
+              </div>
+
+              {/* Bottom Right Button */}
+              <div className="absolute bottom-8 right-8">
+                <Button className="bg-blue-100 hover:bg-blue-200 text-blue-800 border border-blue-300">
+                  Projekte anzeigen
+                </Button>
               </div>
 
               {/* Blue border indicator at bottom */}

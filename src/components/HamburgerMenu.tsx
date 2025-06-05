@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Menu, X, LogOut, Settings, BarChart3 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
