@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
@@ -75,7 +74,7 @@ const Dashboard = () => {
               <div className="grid grid-cols-4 gap-8 h-full">
                 
                 {/* Left Section - Übersicht */}
-                <div className="col-span-3 border-r border-gray-300 pr-8">
+                <div className="col-span-3 border-r border-gray-300 pr-8 flex flex-col">
                   <div className="flex items-center justify-between mb-8">
                     <h2 className="text-xl font-semibold text-gray-800">Übersicht</h2>
                     <Link to="/">
@@ -86,7 +85,7 @@ const Dashboard = () => {
                   </div>
                   
                   {/* Projects Grid */}
-                  <div className="grid grid-cols-4 gap-6 mb-12">
+                  <div className="grid grid-cols-4 gap-6 mb-12 flex-1">
                     {projects.map((project) => (
                       <div key={project.id} className="flex items-start space-x-3">
                         <div className={`w-12 h-12 rounded-full border-4 ${getStatusColor(project.status)} flex-shrink-0`}>
@@ -101,7 +100,7 @@ const Dashboard = () => {
                   </div>
 
                   {/* Projekte - Verteilung */}
-                  <div className="mt-8">
+                  <div className="mt-auto">
                     <h3 className="text-lg font-semibold text-gray-800 mb-4">Projekte - Verteilung</h3>
                     <div className="flex rounded-lg overflow-hidden h-8">
                       <div className="bg-green-500 flex-1 flex items-center justify-center text-white text-sm font-medium" style={{ flexBasis: '75%' }}>
@@ -115,20 +114,13 @@ const Dashboard = () => {
                       </div>
                     </div>
                   </div>
-
-                  {/* Bottom Right Button */}
-                  <div className="absolute bottom-8 right-8">
-                    <Button className="bg-blue-100 hover:bg-blue-200 text-blue-800 border border-blue-300">
-                      Projekte anzeigen
-                    </Button>
-                  </div>
                 </div>
 
                 {/* Right Section - Aktive Auswertungen */}
-                <div className="col-span-1">
+                <div className="col-span-1 flex flex-col">
                   <h2 className="text-xl font-semibold text-gray-800 mb-8">Aktive Auswertungen</h2>
                   
-                  <div className="space-y-6">
+                  <div className="space-y-6 flex-1">
                     {activeEvaluations.map((evaluation) => (
                       <div key={evaluation.id} className="bg-gray-50 rounded-lg p-4">
                         <div className="flex items-center justify-between mb-3">
@@ -176,6 +168,13 @@ const Dashboard = () => {
                         </div>
                       </div>
                     ))}
+                  </div>
+
+                  {/* Separated Projekte anzeigen Button */}
+                  <div className="mt-8 pt-6 border-t border-gray-200">
+                    <Button className="w-full bg-blue-100 hover:bg-blue-200 text-blue-800 border border-blue-300">
+                      Projekte anzeigen
+                    </Button>
                   </div>
                 </div>
               </div>
