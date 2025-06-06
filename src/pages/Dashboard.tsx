@@ -71,40 +71,41 @@ const Dashboard = () => {
             {/* Main Layout Container */}
             <div className="bg-white rounded-lg border-2 border-blue-300 p-8 min-h-[600px] relative">
               
-              {/* Layout Grid */}
-              <div className="grid grid-cols-4 gap-8 h-full">
+              {/* Bootstrap-like Layout */}
+              <div className="flex">
                 
-                {/* Left Section - Übersicht */}
-                <div className="col-span-3 pr-8 relative">
-                  <div className="flex items-center justify-between mb-8">
-                    <h2 className="text-xl font-semibold text-gray-800">Übersicht</h2>
-                    <Link to="/">
-                      <Button className="bg-gray-200 hover:bg-gray-300 text-gray-800 border border-gray-400">
-                        Dokument hochladen
-                      </Button>
-                    </Link>
-                  </div>
+                {/* Col-7 equivalent (58.33%) */}
+                <div className="w-7/12 pr-6">
                   
-                  {/* Projects Grid */}
-                  <div className="grid grid-cols-4 gap-6 mb-12">
-                    {projects.map((project) => (
-                      <div key={project.id} className="flex items-start space-x-3">
-                        <div className={`w-12 h-12 rounded-full border-4 ${getStatusColor(project.status)} flex-shrink-0`}>
-                          <div className={`w-full h-full rounded-full ${getStatusFillColor(project.status)} opacity-20`}></div>
+                  {/* Row 1: Übersicht */}
+                  <div className="mb-6">
+                    <div className="flex items-center justify-between mb-6">
+                      <h2 className="text-xl font-semibold text-gray-800">Übersicht</h2>
+                      <Link to="/">
+                        <Button className="bg-gray-200 hover:bg-gray-300 text-gray-800 border border-gray-400">
+                          Dokument hochladen
+                        </Button>
+                      </Link>
+                    </div>
+                    
+                    {/* Projects Grid */}
+                    <div className="grid grid-cols-4 gap-6 h-[280px]">
+                      {projects.map((project) => (
+                        <div key={project.id} className="flex items-start space-x-3">
+                          <div className={`w-12 h-12 rounded-full border-4 ${getStatusColor(project.status)} flex-shrink-0`}>
+                            <div className={`w-full h-full rounded-full ${getStatusFillColor(project.status)} opacity-20`}></div>
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <h3 className="font-medium text-gray-800 text-sm mb-1">{project.name}</h3>
+                            <p className="text-xs text-gray-600 leading-tight">{project.description}</p>
+                          </div>
                         </div>
-                        <div className="flex-1 min-w-0">
-                          <h3 className="font-medium text-gray-800 text-sm mb-1">{project.name}</h3>
-                          <p className="text-xs text-gray-600 leading-tight">{project.description}</p>
-                        </div>
-                      </div>
-                    ))}
+                      ))}
+                    </div>
                   </div>
 
-                  {/* Blaue horizontale Trennlinie */}
-                  <div className="border-t-2 border-dashed border-blue-400 mb-8"></div>
-
-                  {/* Projekte - Verteilung */}
-                  <div>
+                  {/* Row 2: Projekte - Verteilung */}
+                  <div className="pt-6 border-t-2 border-dashed border-blue-400">
                     <h3 className="text-lg font-semibold text-gray-800 mb-4">Projekte - Verteilung</h3>
                     <div className="flex rounded-lg overflow-hidden h-8">
                       <div className="bg-green-500 flex-1 flex items-center justify-center text-white text-sm font-medium" style={{ flexBasis: '75%' }}>
@@ -119,13 +120,14 @@ const Dashboard = () => {
                     </div>
                   </div>
 
-                  {/* Blaue vertikale Trennlinie */}
-                  <div className="absolute top-0 right-0 h-full border-r-2 border-dashed border-blue-400"></div>
                 </div>
 
-                {/* Right Section - Aktive Auswertungen */}
-                <div className="col-span-1">
-                  <h2 className="text-xl font-semibold text-gray-800 mb-8">Aktive Auswertungen</h2>
+                {/* Vertikale Trennlinie */}
+                <div className="border-l-2 border-dashed border-blue-400 mx-6"></div>
+
+                {/* Col-5 equivalent (41.67%) */}
+                <div className="flex-1">
+                  <h2 className="text-xl font-semibold text-gray-800 mb-6">Aktive Auswertungen</h2>
                   
                   <div className="space-y-6">
                     {activeEvaluations.map((evaluation) => (
