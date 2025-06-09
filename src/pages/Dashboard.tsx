@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
@@ -69,7 +68,7 @@ const Dashboard = () => {
           <div className="max-w-7xl mx-auto">
             
             {/* Main Layout Container */}
-            <div className="bg-white rounded-lg border-2 border-blue-300 p-8 min-h-[600px] relative">
+            <div className="bg-white rounded-lg p-8 min-h-[600px] relative">
               
               {/* Layout Grid */}
               <div className="grid grid-cols-4 gap-8 h-full">
@@ -79,7 +78,7 @@ const Dashboard = () => {
                   <div className="flex items-center justify-between mb-8">
                     <h2 className="text-xl font-semibold text-gray-800">Übersicht</h2>
                     <Link to="/">
-                      <Button variant="outline" size="sm" className="rounded-full">
+                      <Button variant="default" size="sm">
                         Dokument hochladen
                       </Button>
                     </Link>
@@ -173,16 +172,11 @@ const Dashboard = () => {
 
                   {/* Separated Projekte anzeigen Button */}
                   <div className="mt-8 pt-6 border-t border-gray-200">
-                    <Button variant="outline" size="sm" className="w-full rounded-full">
+                    <Button variant="default" size="sm" className="w-full">
                       Projekte anzeigen
                     </Button>
                   </div>
                 </div>
-              </div>
-
-              {/* Blue border indicator at bottom */}
-              <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 bg-blue-500 text-white px-3 py-1 text-xs rounded">
-                8362 x 4816
               </div>
             </div>
 
