@@ -1,13 +1,16 @@
 
 import { useState } from 'react';
-import { Menu, X, LogOut, Settings, BarChart3 } from 'lucide-react';
+import { Menu, X, LogOut, Settings, BarChart3, Moon, Sun } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Switch } from '@/components/ui/switch';
 import { useAuth } from '@/contexts/AuthContext';
+import { useTheme } from '@/contexts/ThemeContext';
 import { useNavigate, Link } from 'react-router-dom';
 
 export const HamburgerMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { logout } = useAuth();
+  const { theme, toggleTheme } = useTheme();
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -41,6 +44,17 @@ export const HamburgerMenu = () => {
             <BarChart3 className="h-4 w-4 mr-3" />
             Dashboard
           </Link>
+          
+          <div className="flex items-center justify-between px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+            <div className="flex items-center">
+              {theme === 'dark' ? <Moon className="h-4 w-4 mr-3" /> : <Sun className="h-4 w-4 mr-3" />}
+              Dark Mode
+            </div>
+            <Switch
+              checked={theme === 'dark'}
+              onCheckedChange={toggleTheme}
+            />
+          </div>
           
           <hr className="my-2 border-gray-200 dark:border-gray-600" />
           

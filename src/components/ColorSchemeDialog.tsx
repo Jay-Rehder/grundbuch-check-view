@@ -30,9 +30,9 @@ export const ColorSchemeDialog = () => {
           </div>
         </div>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-md">
+      <DialogContent className="sm:max-w-md dark:bg-gray-800 dark:border-gray-700">
         <DialogHeader>
-          <DialogTitle>Farbschema auswählen</DialogTitle>
+          <DialogTitle className="dark:text-gray-200">Farbschema auswählen</DialogTitle>
         </DialogHeader>
         <div className="grid grid-cols-2 gap-4 py-4">
           {colorSchemes.map((scheme) => (
@@ -43,7 +43,7 @@ export const ColorSchemeDialog = () => {
               className="flex flex-col items-center gap-2 h-auto p-4"
             >
               <div 
-                className="w-8 h-8 rounded-full border-2 border-gray-300"
+                className="w-8 h-8 rounded-full border-2 border-gray-300 dark:border-gray-600"
                 style={{ backgroundColor: scheme.color }}
               />
               <span className="text-sm">{scheme.name}</span>
