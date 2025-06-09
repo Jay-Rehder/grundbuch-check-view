@@ -24,7 +24,8 @@ export const AnalysisButton = ({ canAnalyze, isAnalyzing, onAnalyze }: AnalysisB
       <Button
         onClick={handleClick}
         disabled={!canAnalyze || isAnalyzing}
-        className="bg-blue-300 hover:bg-blue-400 disabled:bg-gray-300 text-white px-12 py-3 text-base font-medium rounded-xl shadow-sm transition-all duration-200"
+        size="lg"
+        className="disabled:opacity-50 disabled:cursor-not-allowed disabled:from-gray-300 disabled:to-gray-400"
       >
         <div className="flex items-center space-x-3">
           <Search className="h-5 w-5" />
