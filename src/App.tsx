@@ -12,6 +12,7 @@ import Dashboard from "./pages/Dashboard";
 import Analysis from "./pages/Analysis";
 import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
+import VertragspartnerAnmeldung from "./pages/VertragspartnerAnmeldung";
 
 const queryClient = new QueryClient();
 
@@ -50,6 +51,14 @@ const AppRoutes = () => {
         element={
           <ProtectedRoute>
             <Analysis />
+          </ProtectedRoute>
+        } 
+      />
+      <Route 
+        path="/vertragspartner" 
+        element={
+          <ProtectedRoute>
+            <VertragspartnerAnmeldung />
           </ProtectedRoute>
         } 
       />

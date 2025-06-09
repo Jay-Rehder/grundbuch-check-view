@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-import { Menu, X, LogOut, Settings, BarChart3, Moon, Sun } from 'lucide-react';
+import { Menu, X, LogOut, Settings, BarChart3, Moon, Sun, Users } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Switch } from '@/components/ui/switch';
 import { useAuth } from '@/contexts/AuthContext';
@@ -43,6 +43,15 @@ export const HamburgerMenu = () => {
           >
             <BarChart3 className="h-4 w-4 mr-3" />
             Dashboard
+          </Link>
+          
+          <Link
+            to="/vertragspartner"
+            className="flex items-center px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+            onClick={() => setIsOpen(false)}
+          >
+            <Users className="h-4 w-4 mr-3" />
+            Vertragspartner Anmeldung
           </Link>
           
           <div className="flex items-center justify-between px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
