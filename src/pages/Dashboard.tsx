@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
@@ -78,7 +79,7 @@ const Dashboard = () => {
                   <div className="flex items-center justify-between mb-8">
                     <h2 className="text-xl font-semibold text-gray-800">Übersicht</h2>
                     <Link to="/">
-                      <Button variant="secondary" size="sm" className="bg-gray-200 hover:bg-gray-300 text-gray-800 border border-gray-400">
+                      <Button variant="outline" size="sm" className="rounded-full">
                         Dokument hochladen
                       </Button>
                     </Link>
@@ -172,7 +173,7 @@ const Dashboard = () => {
 
                   {/* Separated Projekte anzeigen Button */}
                   <div className="mt-8 pt-6 border-t border-gray-200">
-                    <Button variant="secondary" size="sm" className="w-full bg-blue-100 hover:bg-blue-200 text-blue-800 border border-blue-300">
+                    <Button variant="outline" size="sm" className="w-full rounded-full">
                       Projekte anzeigen
                     </Button>
                   </div>
