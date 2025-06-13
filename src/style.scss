@@ -1,0 +1,16 @@
+@import './mixins.scss';
+@import './variables.scss';
+
+// Bootstrap: 
+
+.container{
+    padding: 0;
+    @include makebpproperty(max-width,370px, 540px, 720px, 960px, 1140px, 1320px);
+}
+
+
+
+.inner{
+    background: teal;
+    height: 200px;
+}

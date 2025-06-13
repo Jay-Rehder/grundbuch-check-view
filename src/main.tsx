@@ -1,5 +1,15 @@
-import { createRoot } from 'react-dom/client'
-import App from './App.tsx'
-import './index.css'
+// src/main.tsx
+import { createRoot } from 'react-dom/client';
+import App from './App.tsx';
+import './index.css';
+import './style.scss';
+import ViewportIndicator from './viewportIndicator';
 
-createRoot(document.getElementById("root")!).render(<App />);
+const root = createRoot(document.getElementById('root')!);
+
+root.render(
+  <>
+    <App />
+    <ViewportIndicator />
+  </>
+);

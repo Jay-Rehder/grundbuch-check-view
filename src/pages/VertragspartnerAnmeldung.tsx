@@ -87,7 +87,7 @@ const VertragspartnerAnmeldung = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
-      <Header />
+      <Header/>
       
       <main className="pt-20 px-6 py-8">
         <div className="container mx-auto max-w-7xl">
@@ -196,7 +196,7 @@ const VertragspartnerAnmeldung = () => {
             </div>
 
             {/* Rechte Seite - Listenansicht */}
-            <div>
+            <div className="row">
               <Card className="shadow-lg border-0 bg-white/70 dark:bg-gray-800/70 backdrop-blur-sm">
                 <CardHeader>
                   <CardTitle className="text-xl font-semibold text-gray-900 dark:text-white">
@@ -207,11 +207,11 @@ const VertragspartnerAnmeldung = () => {
                   </p>
                 </CardHeader>
                 <CardContent>
-                  <div className="space-y-4 max-h-[600px] overflow-y-auto">
+                  <div className="row item-wrapper space-y-4 max-h-[600px] overflow-y-auto">
                     {vertragspartner.map((vp) => (
                       <div 
                         key={vp.id} 
-                        className="p-4 border border-gray-200 dark:border-gray-600 rounded-lg bg-white/50 dark:bg-gray-700/50"
+                        className="col-12 col-lg-6 col-xxl-4 item p-4 border border-gray-200 dark:border-gray-600 rounded-lg bg-white/50 dark:bg-gray-700/50"
                       >
                         <div className="flex justify-between items-start mb-3">
                           <div>
@@ -280,8 +280,8 @@ const VertragspartnerAnmeldung = () => {
           </div>
         </div>
       </main>
-    </div>
-  );
+</div>
+);
 };
 
 export default VertragspartnerAnmeldung;

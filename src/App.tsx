@@ -14,6 +14,9 @@ import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
 import VertragspartnerAnmeldung from "./pages/VertragspartnerAnmeldung";
 
+
+
+
 const queryClient = new QueryClient();
 
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
@@ -67,6 +70,8 @@ const AppRoutes = () => {
     </Routes>
   );
 };
+
+
 
 const App = () => (
   <QueryClientProvider client={queryClient}>

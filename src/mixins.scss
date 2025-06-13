@@ -1,0 +1,29 @@
+@import './variables.scss';
+
+
+@mixin makebpproperty($property, $xs, $sm: null, $md: null, $lg: null, $xl: null, $xxl: null) {
+  $values: ($xs, $sm, $md, $lg, $xl, $xxl);
+  $keys: (XS, SM, MD, LG, XL, XXL);
+  $last-value: null;
+
+  @for $i from 1 through length($keys) {
+    $key: nth($keys, $i);
+    $value: nth($values, $i);
+
+    @if $value == null {
+      $value: $last-value;
+    } @else {
+      $last-value: $value;
+    }
+
+    $min-width: map-get($breakpoints, $key);
+
+    @if $min-width == 0 {
+      #{$property}: #{$value};
+    } @else {
+      @media (min-width: $min-width) {
+        #{$property}: #{$value};
+      }
+    }
+  }
+}
