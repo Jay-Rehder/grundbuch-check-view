@@ -6,16 +6,12 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { AuthProvider, useAuth } from "@/contexts/AuthContext";
 import { ColorSchemeProvider } from "@/contexts/ColorSchemeContext";
-import { ThemeProvider } from "@/contexts/ThemeContext";
 import Index from "./pages/Index";
 import Dashboard from "./pages/Dashboard";
 import Analysis from "./pages/Analysis";
 import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
 import VertragspartnerAnmeldung from "./pages/VertragspartnerAnmeldung";
-
-
-
 
 const queryClient = new QueryClient();
 
@@ -71,22 +67,18 @@ const AppRoutes = () => {
   );
 };
 
-
-
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <ThemeProvider>
-        <ColorSchemeProvider>
-          <AuthProvider>
-            <BrowserRouter>
-              <AppRoutes />
-            </BrowserRouter>
-          </AuthProvider>
-        </ColorSchemeProvider>
-      </ThemeProvider>
+      <ColorSchemeProvider>
+        <AuthProvider>
+          <BrowserRouter>
+            <AppRoutes />
+          </BrowserRouter>
+        </AuthProvider>
+      </ColorSchemeProvider>
     </TooltipProvider>
   </QueryClientProvider>
 );

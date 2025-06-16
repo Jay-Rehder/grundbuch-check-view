@@ -61,7 +61,7 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col dark:bg-gray-900 transition-colors" style={{ backgroundColor: currentScheme.color }}>
+    <div className="min-h-screen flex flex-col" style={{ backgroundColor: currentScheme.color }}>
       <Header />
       
       <div className="flex-1 pt-20 pb-8">
@@ -69,15 +69,15 @@ const Dashboard = () => {
           <div className="max-w-7xl mx-auto">
             
             {/* Main Layout Container */}
-            <div className="bg-white dark:bg-gray-800 rounded-lg p-8 min-h-[600px] relative transition-colors">
+            <div className="bg-white rounded-lg p-8 min-h-[600px] relative">
               
               {/* Layout Grid */}
               <div className="grid grid-cols-4 gap-8 h-full">
                 
                 {/* Left Section - Übersicht */}
-                <div className="col-span-3 border-r border-gray-300 dark:border-gray-600 pr-8 flex flex-col">
+                <div className="col-span-3 border-r border-gray-300 pr-8 flex flex-col">
                   <div className="flex items-center justify-between mb-8">
-                    <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-200">Übersicht</h2>
+                    <h2 className="text-xl font-semibold text-gray-800">Übersicht</h2>
                     <Link to="/">
                       <Button variant="default" size="sm">
                         Dokument hochladen
@@ -93,8 +93,8 @@ const Dashboard = () => {
                           <div className={`w-full h-full rounded-full ${getStatusFillColor(project.status)} opacity-20`}></div>
                         </div>
                         <div className="flex-1 min-w-0">
-                          <h3 className="font-medium text-gray-800 dark:text-gray-200 text-sm mb-1">{project.name}</h3>
-                          <p className="text-xs text-gray-600 dark:text-gray-400 leading-tight">{project.description}</p>
+                          <h3 className="font-medium text-gray-800 text-sm mb-1">{project.name}</h3>
+                          <p className="text-xs text-gray-600 leading-tight">{project.description}</p>
                         </div>
                       </div>
                     ))}
@@ -102,7 +102,7 @@ const Dashboard = () => {
 
                   {/* Projekte - Verteilung */}
                   <div className="mt-auto">
-                    <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4">Projekte - Verteilung</h3>
+                    <h3 className="text-lg font-semibold text-gray-800 mb-4">Projekte - Verteilung</h3>
                     <div className="flex rounded-lg overflow-hidden h-8">
                       <div className="bg-green-500 flex-1 flex items-center justify-center text-white text-sm font-medium" style={{ flexBasis: '75%' }}>
                         124
@@ -119,13 +119,13 @@ const Dashboard = () => {
 
                 {/* Right Section - Aktive Auswertungen */}
                 <div className="col-span-1 flex flex-col">
-                  <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-8">Aktive Auswertungen</h2>
+                  <h2 className="text-xl font-semibold text-gray-800 mb-8">Aktive Auswertungen</h2>
                   
                   <div className="space-y-6 flex-1">
                     {activeEvaluations.map((evaluation) => (
-                      <div key={evaluation.id} className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 transition-colors">
+                      <div key={evaluation.id} className="bg-gray-50 rounded-lg p-4">
                         <div className="flex items-center justify-between mb-3">
-                          <h3 className="font-medium text-gray-800 dark:text-gray-200 text-sm">{evaluation.name}</h3>
+                          <h3 className="font-medium text-gray-800 text-sm">{evaluation.name}</h3>
                           <div className="flex items-center space-x-2">
                             {evaluation.status === 'running' && <Play className="h-3 w-3 text-green-500" />}
                             {evaluation.status === 'paused' && <Pause className="h-3 w-3 text-orange-500" />}
@@ -145,7 +145,7 @@ const Dashboard = () => {
                                 stroke="currentColor" 
                                 strokeWidth="2" 
                                 fill="none" 
-                                className="text-gray-200 dark:text-gray-600"
+                                className="text-gray-200"
                               />
                               <circle 
                                 cx="12" 
@@ -163,7 +163,7 @@ const Dashboard = () => {
                               />
                             </svg>
                             <div className="absolute inset-0 flex items-center justify-center">
-                              <span className="text-sm font-medium text-gray-800 dark:text-gray-200">{evaluation.progress}%</span>
+                              <span className="text-sm font-medium text-gray-800">{evaluation.progress}%</span>
                             </div>
                           </div>
                         </div>
@@ -172,7 +172,7 @@ const Dashboard = () => {
                   </div>
 
                   {/* Separated Projekte anzeigen Button */}
-                  <div className="mt-8 pt-6 border-t border-gray-200 dark:border-gray-600">
+                  <div className="mt-8 pt-6 border-t border-gray-200">
                     <Button variant="default" size="sm" className="w-full">
                       Projekte anzeigen
                     </Button>
